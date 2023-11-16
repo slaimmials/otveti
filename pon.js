@@ -20,6 +20,9 @@ let character = {
     },
     useHealthEdit(edit) {
         this.health += Number(edit)
+        if (this.health > this.maxHealth) {
+            this.health = this.maxHealth
+        }
     }
 }
 
@@ -29,6 +32,6 @@ while(!character.getDefeatStatus()) {
     if (character.getDefeatStatus()) {
         alert("Персонаж побежден!")
     } else {
-        alert(`Здоровье персонажа: ${character.getHealth()}`)
+        getInfo()
     }
 }
