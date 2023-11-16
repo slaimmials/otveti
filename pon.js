@@ -7,13 +7,28 @@ let character = {
     getInfo() {
         alert(`Nickname: ${this.nickname}\nЗдоровье: ${this.health}`)
     },
+    getHealth() {
+        return this.health
+    },
     setDefeatStatus() {
         if (this.health <= 0) {
             this.defeat = true
         }
     },
-    useHealthBooster(boost) {
-        this.health += boost
+    getDefeatStatus() {
+        return this.defeat;
+    },
+    useHealthEdit(edit) {
+        this.health += Number(edit)
     }
 }
-character.getInfo()
+
+while(!character.getDefeatStatus()) {
+    character.useHealthEdit(prompt("Введите целое число\nЧисло отрицательное: наносит урон\nЧисло положительное: восстанавливает здоровье"))
+    character.setDefeatStatus();
+    if (character.getDefeatStatus()) {
+        alert("Персонаж побежден!")
+    } else {
+        alert(`Здоровье персонажа: ${character.getHealth()}`)
+    }
+}
