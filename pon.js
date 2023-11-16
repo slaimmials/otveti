@@ -32,6 +32,6 @@ while(!character.getDefeatStatus()) {
     if (character.getDefeatStatus()) {
         alert("Персонаж побежден!")
     } else {
-        getInfo()
+        character.getInfo()
     }
 }
