@@ -12,7 +12,8 @@ let character = {
             this.defeat = true
         }
     },
-    useHealthBooster() {
-        this.health = this.maxHealth
+    useHealthBooster(boost) {
+        this.health += boost
     }
 }
+character.getInfo()
