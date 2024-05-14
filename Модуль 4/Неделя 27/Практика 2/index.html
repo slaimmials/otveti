@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>Неделя 27 №2</title>
+        <link rel="stylesheet" type="text/css" href="styles.css"/>
+    </head>
+    <body>
+        <img src="Background/BackForest.png" class="b_forest">
+        <img src="Background/FrontForest.png" class="f_forest">
+        <img src="Background/Ground.png" class="ground">
+        <img src="Background/GroundDecor.png" class="decor">
+        <img src="Background/Front.png" class="front">
+        <img src="Idle/Idle1.png" class="player" id="player">
+        <div class="buttons">
+            <button class="control" type="button" onclick="SetAnimation(1,-1,0)">Left</button>
+            <button class="control" type="button" onclick="SetAnimation(0,1,1)">Stop</button>
+            <button class="control" type="button" onclick="SetAnimation(1,1,2)">Right</button>
+        </div>
+        <script>
+            let player = document.getElementById("player");
+            let animation;
+            let animationNum = 0;
+            let curFrame = 1;
+            let animationName = ["Idle/Idle","Running/Running"];
+            let lastFrame = [7,8];
+            
+            function NextFrame() {
+                if (curFrame < lastFrame[0])
+                    curFrame++
+                else
+                    curFrame = 1
+            }
+
+            function PlayAnimation() {
+                player.src = `${animationName[animationNum]}${curFrame}.png`;
+                NextFrame();
+            }
+
+            function SetAnimation(num, scale, state) {
+                animationNum = num;
+                curFrame = 1;
+                player.style.transform = `translate(0,200px) scale(${scale},1)`;
+                clearInterval(animation);
+                animation = setInterval(PlayAnimation,100)
+            }
+        </script>
+    </body>
+    
+</html>

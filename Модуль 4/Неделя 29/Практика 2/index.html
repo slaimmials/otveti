@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Неделя 29</title>
+        <link rel="stylesheet" type="text/css" href="styles.css"/>
+    </head>
+    <body id="body">
+        <img src="Background/BackForest.png" class="b_forest">
+        <img src="Background/FrontForest.png" class="f_forest">
+        <img src="Background/Ground.png" class="ground">
+        <img src="Background/GroundDecor.png" class="decor">
+        <img src="Background/Front.png" class="front">
+        <img src="Idle/Idle1.png" class="player" id="player">
+        <div class="buttons">
+            <button class="control" id="Left" type="button" onclick="SetAnimation(1,-1, -1)">Left</button>
+            <button class="control" id="Stop" type="button" onclick="SetAnimation(0,scale,0)">Stop</button>
+            <button class="control" id="Right" type="button" onclick="SetAnimation(1,1,1)">Right</button>
+        </div>
+        <script>
+            let player = document.getElementById("player");
+            let animation;
+            let animationNum = 0;
+            let curFrame = 1;
+            let animationName = ["Idle/Idle","Running/Running"];
+            let lastFrame = [7,8];
+            let rock;
+            let rockPositionY = 700;
+            let rockPositionX = 0;
+            let rockRotation = 0;
+            let golemPos = 0;
+            let scale = 1;
+            let direction = 0;
+
+            function MoveCharacter() {
+                if ((direction > 0 && golemPos>= 1400) || (direction < 0 && golemPos<=0)) {
+                    direction = 0;
+                    SetAnimation(0,scale,direction)
+                } else {
+                    golemPos+=direction;
+                    player.style.transform = `translate(${golemPos}px,200px) scale(${scale},1)`;
+                }
+            }
+            setInterval(MoveCharacter,10)
+            
+            function NextFrame() {
+                if (curFrame < lastFrame[0])
+                    curFrame++
+                else
+                    curFrame = 1
+            }
+
+            function PlayAnimation() {
+                player.src = `${animationName[animationNum]}${curFrame}.png`;
+                NextFrame();
+            }
+
+            function SetAnimation(num, newScale, newDirection) {
+                scale = newScale;
+                direction = newDirection
+                animationNum = num;
+                curFrame = 1;
+                player.style.transform = `translate(0,200px) scale(${scale},1)`;
+                clearInterval(animation);
+                animation = setInterval(PlayAnimation,100)
+            }
+            SetAnimation(0,scale,0)
+
+            function CreateNewRock() {
+                rock = document.createElement("img")
+                rock.className = "rock";
+                rock.src = "Rocks/Rock1.png";
+                rock.alt = "Камень";
+                let body = document.getElementById("body");
+                body.appendChild(rock)
+                //document.appendChild(body, rock)
+            }
+            CreateNewRock()
+
+            function MoveRock() {
+                if (rockPositionY >= 800) {
+                    rockPositionX = Math.floor(Math.random()*1601);
+                    console.log(rockPositionX);
+                    rockPositionY = 0;
+                } else {
+                    rockPositionX+=2;
+                    rockRotation++;
+                    rock.style.transform = `translate(${rockPositionX}px, ${rockPositionY}px) rotate(${rockRotation}deg)`;
+                }
+            }
+            setInterval(MoveRock,10);
+        </script>
+    </body>
+    
+</html>

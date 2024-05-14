@@ -1,0 +1,149 @@
+
+.race_title {
+    width: 100%;
+    height: 100px;
+    margin: 0px;
+    font-size: 50px;
+    text-align: center;
+    z-index: 11;
+}
+
+#humans_text {
+    color: rgb(230, 255, 0);
+    animation-name: MoveTextType1;
+    animation-duration: 10s;
+    animation-iteration-count: infinite;
+}
+
+#elfs_text {
+    color: greenyellow;
+    animation-name: MoveTextType2;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+
+.character_line {
+    width: 100%;
+    height: 300px;
+}
+
+.background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.group {
+    display: flex;
+    justify-content: center;
+}
+
+#dwarfs_text { 
+    color: rgb(40, 0, 255);
+    animation-name: MoveTextType3;
+    animation-duration: 5s;
+    animation-iteration-count: infinite;
+}
+
+.characters {
+    width: 200px;
+    height: 200px;
+    padding-left: 20px;
+    border-radius: 5px;
+    transition-property: width, height, border-radius, z-index;
+    transition-duration: 1s;
+}
+
+.characters:hover {
+    width: 300px;
+    height: 300px;
+    border-radius: 0px;
+    z-index: 1;
+    animation-name: Border;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes MoveTextType1 {
+    from {
+        transform: translate(-500px, 0px);
+    }
+
+    50% {
+        transform: translate(500px, 0px);
+    }
+
+    to {
+        transform: translate(-500px, 0px);
+    }
+}
+
+@keyframes MoveTextType2 {
+    from {
+        transform: translate(0px, -50px);
+        transform: scale(0);
+    }
+    to {
+        transform: translate(0px, 0px);
+        transform: scale(1);
+    }
+}
+
+@keyframes MoveTextType3 {
+    from {
+        transform: scale(1);
+    }
+    50% {
+        
+        transform: scale(-1, 1);
+    }
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes Border {
+    from {
+        border: 20px solid rgba(255, 0, 0, 0.75);
+        border-radius: 50px;
+    }
+
+    15% {
+        border: 20px solid rgba(255, 170, 0, 0.75);
+        border-radius: 50px;
+    }
+
+    30% {
+        border: 20px solid rgba(255, 255, 0, 0.75);
+        border-radius: 50px;
+    }
+
+    45% {
+        border: 20px solid rgba(0, 255, 0, 0.75);
+        border-radius: 50px;
+    }
+
+    60% {
+        border: 20px solid rgba(0, 255, 255, 0.75);
+        border-radius: 50px;
+    }
+
+    75% {
+        border: 20px solid rgba(0, 0, 255, 0.75);
+        border-radius: 50px;
+    }
+
+    90% {
+        border: 20px solid rgba(255, 0, 255, 0.75);
+        border-radius: 50px;
+    }
+
+    to {
+        border: 20px solid rgba(255, 0, 0, 0.75);
+        border-radius: 50px;
+    }
+}
+
+
+

@@ -1,0 +1,62 @@
+.ground {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -5; 
+}
+
+.f_forest {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+}
+
+.decor {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -4;
+}
+
+.front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+.b_forest {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -3;
+}
+
+.player {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    z-index: 1;
+    transform: translate(0,200px) scale(1,1);
+}
+
+.buttons {
+    position: absolute;
+    display: flex;
+    top: 80%;
+    width: 100%;
+    justify-content: center;
+    z-index: 3;
+}
+
+button {
+    width: 300px;
+    height: 80px;
+    margin: 50px;
+
+    font-size: 40px;
+    border: 5px solid rgb(0, 80, 0);
+    border-radius: 30px;
+    background-color: rgba(230,230,0,0.5);
+}

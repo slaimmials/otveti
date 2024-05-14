@@ -1,0 +1,104 @@
+.ground {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -5; 
+}
+
+.f_forest {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -2;
+}
+
+.decor {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -4;
+}
+
+.front {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 2;
+}
+
+.b_forest {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -3;
+}
+
+.player {
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    z-index: 1;
+    transform: translate(0,200px) scale(1,1);
+}
+
+.buttons {
+    position: absolute;
+    display: flex;
+    top: 80%;
+    width: 100%;
+    justify-content: center;
+    z-index: 3;
+}
+
+button {
+    width: 300px;
+    height: 80px;
+    margin: 50px;
+
+    font-family: "Freeman";
+    font-size: 40px;
+    border-radius: 30px;
+    background-color: rgba(230,230,0,0.5);
+}
+
+@font-face {
+    font-family: "Freeman";
+    src: url("fonts/Freeman.ttf");
+}
+
+#Left {
+    border: solid rgb(0, 0, 80);
+    border-top-left-radius: 40px;
+    border-bottom-left-radius: 40px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+#Idle {
+    border: solid rgb(0, 0, 80);
+    border-radius: 0px;
+}
+
+#Right {
+    border: solid rgb(0, 0, 80);
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 40px;
+    border-bottom-right-radius: 40px;
+}
+
+#Stop {
+    border: solid rgb(0, 0, 80);
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+
+.rock {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    z-index: 3;
+    transform: translate(0px, 0px) rotate(0deg);
+}

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html>                                                                                                                         
+    <head>                                          
+        <meta charset="utf-8"/>  
+        <link rel="stylesheet" type="text/CSS" href="styles.css">                        
+        <title>Калькулятор</title>  
+        
+        <link rel="stylesheet" href="mocha.css">
+        
+        <script src="mocha.js"></script>
+        <script src="chai.js"></script>
+
+        <script>
+            mocha.setup("bdd");
+            var assert = chai.assert;
+        </script>
+    </head>
+    <body>                                          
+        <div class="calc">
+            <div class="display">
+                <form>                      
+                    <input id="dField" type="text" name="displayField" value="0"/>   
+                </form> 
+            </div>
+            <div class="button_line">
+                <button onclick="UpdateOperand('7')" type="button">7</button> 
+                <button onclick="UpdateOperand('8')" type="button">8</button>
+                <button onclick="UpdateOperand('9')" type="button">9</button>
+                <button onclick="Reset(true)" style="background-color: red; color: black;" type="button">С</button>
+            </div>
+            <div class="button_line">
+                <button onclick="UpdateOperand('4')" type="button">4</button> 
+                <button onclick="UpdateOperand('5')" type="button">5</button>
+                <button onclick="UpdateOperand('6')" type="button">6</button>
+                <button onclick="SetOperator('+')" style="background-color: darkgoldenrod; color: black;" type="button">+</button>
+            </div>
+            <div class="button_line">
+                <button onclick="UpdateOperand('1')" type="button">1</button> 
+                <button onclick="UpdateOperand('2')" type="button">2</button>
+                <button onclick="UpdateOperand('3')" type="button">3</button>
+                <button onclick="SetOperator('-')" style="background-color: darkgoldenrod; color: black;" type="button">-</button>
+            </div>
+            <div class="button_line">
+                <button onclick="UpdateOperand('0')" type="button">0</button> 
+                <button onclick="UpdateOperand('.')" type="button">.</button>
+                <button onclick="SetOperator('*')" style="background-color: darkgoldenrod; color: black;" type="button">*</button>
+                <button onclick="SetOperator('/')" style="background-color: darkgoldenrod; color: black;" type="button">/</button>
+            </div>
+            <div class="button_line">
+                <button onclick="Result(operand1,operand2,operator)" style="width: 215px; background-color: green; color: black;" type="button">=</button>
+            </div>
+        </div>
+
+        <script>
+            
+            var display = document.getElementById("dField");
+            function Display(value)
+            {
+                display.value = value;
+            }
+
+            var operand1 = "0";
+            var operand2 = "";
+            var dot = false; 
+
+            function UpdateOperand(num)
+            {
+                if(operand1 == "0" || operand1 == " ")
+                {
+                    if(num != ".")
+                    {
+                        operand1 = num;
+                    }
+                }
+                else
+                {
+                    if((dot==false && num == ".") || num != ".")
+                    {
+                        operand1 += String(num);
+                        if(num == ".")
+                            dot = true;
+                    }
+                }
+                Display(operand1);
+                return num;
+            }
+
+            function SecondOperand()
+            {
+                operand2 = operand1;
+                operand1 = " ";
+                dot = false;
+            }
+
+            var operator = "";
+            function SetOperator(operator)
+            {
+                if(this.operator == "")
+                {
+                    this.operator = operator;
+                    SecondOperand();
+                    Display(this.operator);
+                }
+                return this.operator;
+            }
+
+            function Reset(updateDisplay)
+            {
+                operand1 = "0";
+                operand2 = "";
+                operator = "";
+                dot = false;
+                if(updateDisplay)
+                    Display(this.operand1);
+                return operand1, operand2, operator, dot;
+            }
+
+            function Result(operand2, operand1, operator)
+            {
+                operand1 = parseFloat(operand1);
+                operand2 = parseFloat(operand2);
+                if(operator == "+")
+                    this.operand1 = operand2 + operand1;
+                if(operator == "-")
+                    this.operand1 = operand2 - operand1;
+                if(operator == "*")
+                    this.operand1 = operand2 * operand1;
+                if(operator == "/")
+                    this.operand1 = operand2 / operand1;
+                let result = this.operand1;
+                Display(this.operand1);
+                Reset(false);
+                return result;
+            }
+        </script>
+
+        <div id="mocha"></div>
+
+        <script src="test.js"></script>
+
+        <script>
+            mocha.run()
+        </script>
+    </body>
+</html>                                            
+
+
+  
